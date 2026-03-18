@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noppharat Wongsa | Backend Portfolio</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="Portfolio of Noppharat Wongsa, backend software developer focused on enterprise systems, automation, and practical business impact."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f4ef;
+        --surface: #fffef9;
+        --ink: #172033;
+        --muted: #59647c;
+        --brand: #166534;
+        --brand-soft: #daf3d8;
+        --accent: #0f5d8c;
+        --line: #d7deea;
+        --shadow: 0 14px 40px rgba(18, 33, 61, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 20% -10%, #dce9ff 0, transparent 38%),
+          radial-gradient(circle at 90% 18%, #d7f5e4 0, transparent 34%),
+          var(--bg);
+        font-family: "IBM Plex Sans Thai", "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      .wrap {
+        width: min(1120px, 92vw);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(245, 244, 239, 0.86);
+        border-bottom: 1px solid rgba(89, 100, 124, 0.2);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        min-height: 68px;
+      }
+
+      .brand {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      .links {
+        display: flex;
+        gap: 0.7rem;
+      }
+
+      .links a,
+      .lang-toggle {
+        text-decoration: none;
+        color: var(--ink);
+        font-size: 0.85rem;
+        font-weight: 600;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+      }
+
+      .lang-toggle {
+        cursor: pointer;
+        min-width: 76px;
+      }
+
+      .links a:hover,
+      .lang-toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1.4rem;
+        padding: 2.8rem 0 1.4rem;
+        align-items: stretch;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid rgba(23, 32, 51, 0.09);
+        box-shadow: var(--shadow);
+        border-radius: 22px;
+      }
+
+      .hero-main {
+        padding: 1.8rem;
+      }
+
+      .kicker {
+        display: inline-block;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: var(--brand-soft);
+        color: var(--brand);
+        font-weight: 600;
+        font-size: 0.83rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", sans-serif;
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 0.9rem;
+        font-size: clamp(1.95rem, 3.6vw, 3rem);
+      }
+
+      .subtitle {
+        margin: 0.8rem 0 1rem;
+        font-size: 1.02rem;
+        color: var(--muted);
+        max-width: 62ch;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1.2rem;
+      }
+
+      .btn {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        padding: 0.65rem 1rem;
+        font-weight: 600;
+        font-size: 0.92rem;
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(145deg, #0f5d8c, #0d4f79);
+        color: #fff;
+      }
+
+      .btn-muted {
+        background: #e9edf5;
+        color: var(--ink);
+      }
+
+      .hero-side {
+        padding: 1.35rem;
+        display: grid;
+        gap: 0.7rem;
+        align-content: start;
+      }
+
+      .meta {
+        border: 1px dashed rgba(89, 100, 124, 0.35);
+        border-radius: 14px;
+        padding: 0.75rem 0.85rem;
+        background: #fff;
+      }
+
+      .meta b {
+        display: block;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.14rem;
+      }
+
+      .meta span,
+      .meta a {
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 0.96rem;
+      }
+
+      .section {
+        margin: 1rem 0 1.2rem;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin: 1rem 0 0.7rem;
+        gap: 0.7rem;
+      }
+
+      .section h2 {
+        font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+      }
+
+      .section-note {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .impact-item {
+        padding: 1rem;
+      }
+
+      .impact-item h3 {
+        font-size: 1.08rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .impact-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .project {
+        padding: 1.1rem;
+      }
+
+      .project h3 {
+        font-size: 1.06rem;
+      }
+
+      .project p {
+        color: var(--muted);
+        margin: 0.45rem 0 0.8rem;
+        font-size: 0.93rem;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 0.28rem 0.6rem;
+        font-size: 0.8rem;
+        color: #22304b;
+      }
+
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .skill-card {
+        padding: 1rem;
+      }
+
+      .skill-card h3 {
+        font-size: 0.98rem;
+        margin-bottom: 0.55rem;
+      }
+
+      .roles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+
+      .role {
+        background: #12213d;
+        color: #fff;
+        border-radius: 999px;
+        padding: 0.38rem 0.72rem;
+        font-size: 0.82rem;
+      }
+
+      footer {
+        margin: 2rem 0 2.4rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      [data-animate] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+
+      [data-animate].show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .impact-grid,
+        .project-grid,
+        .skill-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .topbar-inner {
+          flex-direction: column;
+          padding: 0.65rem 0;
+          gap: 0.45rem;
+        }
+
+        .actions,
+        .links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <div class="brand">Noppharat Wongsa</div>
+        <div class="actions">
+          <nav class="links">
+            <a href="#projects" data-i18n="nav.projects">Projects</a>
+            <a href="#skills" data-i18n="nav.skills">Skills</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+          </nav>
+          <button class="lang-toggle" id="langToggle" type="button">TH</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <article class="card hero-main" data-animate>
+          <span class="kicker" data-i18n="hero.kicker">Backend Software Developer</span>
+          <h1 data-i18n="hero.title">
+            Building reliable enterprise workflows and practical automation.
+          </h1>
+          <p class="subtitle" data-i18n="hero.subtitle">
+            I design and deliver production systems across C#/.NET backend, SQL
+            Server, API integration, and operational tooling. My focus is
+            business logic correctness, automation, and measurable daily impact.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="mailto:W.Noppharat@outlook.com" data-i18n="hero.email">
+              Email Me
+            </a>
+            <a class="btn btn-muted" href="#projects" data-i18n="hero.work">See My Work</a>
+          </div>
+        </article>
+
+        <aside class="card hero-side" id="contact" data-animate>
+          <div class="meta">
+            <b data-i18n="meta.name">Name</b>
+            <span>Noppharat Wongsa</span>
+          </div>
+          <div class="meta">
+            <b data-i18n="meta.email">Email</b>
+            <a href="mailto:W.Noppharat@outlook.com">W.Noppharat@outlook.com</a>
+          </div>
+          <div class="meta">
+            <b data-i18n="meta.phone">Phone</b>
+            <span>+66 94 914 4331</span>
+          </div>
+          <div class="meta">
+            <b data-i18n="meta.location">Location</b>
+            <span data-i18n="meta.locationValue">Samutprakan, Thailand</span>
+          </div>
+          <div class="meta">
+            <b data-i18n="meta.experience">Experience</b>
+            <span data-i18n="meta.experienceValue">3.9 years</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2 data-i18n="impact.title">Impact Highlights</h2>
+          <span class="section-note" data-i18n="impact.note">Enterprise systems in active production</span>
+        </div>
+        <div class="impact-grid">
+          <article class="card impact-item" data-animate>
+            <h3 data-i18n="impact.card1.title">Approval Workflow Efficiency</h3>
+            <p data-i18n="impact.card1.body">
+              Implemented PR/PO/Budget multi-step authorization and permission
+              logic, reducing manual approval workload.
+            </p>
+          </article>
+          <article class="card impact-item" data-animate>
+            <h3 data-i18n="impact.card2.title">Automated Reporting Operations</h3>
+            <p data-i18n="impact.card2.body">
+              Built scheduled reporting jobs with email delivery and dynamic
+              file generation for daily production operations.
+            </p>
+          </article>
+          <article class="card impact-item" data-animate>
+            <h3 data-i18n="impact.card3.title">Data Access Reliability</h3>
+            <p data-i18n="impact.card3.body">
+              Delivered internal product information systems with secure API,
+              field permissions, and large dataset filtering.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-head">
+          <h2 data-i18n="projects.title">Selected Projects</h2>
+          <span class="section-note" data-i18n="projects.note">Built from real operational requirements</span>
+        </div>
+        <div class="project-grid">
+          <article class="card project" data-animate>
+            <h3 data-i18n="projects.p1.title">Enterprise Document Workflow & Budget Control</h3>
+            <p data-i18n="projects.p1.body">
+              PR/PO/Budget approval flows, role-based permissions, and financial
+              validations with GL Account, Cost Center, Quarter, and Year.
+            </p>
+            <div class="chips">
+              <span class="chip">ASP.NET WebForms</span>
+              <span class="chip">C#</span>
+              <span class="chip">SQL Server</span>
+            </div>
+          </article>
+
+          <article class="card project" data-animate>
+            <h3 data-i18n="projects.p2.title">Automated PR/PO Reporting & Notification</h3>
+            <p data-i18n="projects.p2.body">
+              Automated report generation and email distribution with centralized
+              runtime settings and optimized large dataset processing.
+            </p>
+            <div class="chips">
+              <span class="chip">C#</span>
+              <span class="chip">SQL Server</span>
+              <span class="chip">Excel Generation</span>
+            </div>
+          </article>
+
+          <article class="card project" data-animate>
+            <h3 data-i18n="projects.p3.title">Product Information Management System</h3>
+            <p data-i18n="projects.p3.body">
+              Internal platform for product search and detail inspection with
+              pagination, modal workflows, and secure endpoint controls.
+            </p>
+            <div class="chips">
+              <span class="chip">Next.js</span>
+              <span class="chip">Node.js (Express)</span>
+              <span class="chip">SQL Server</span>
+            </div>
+          </article>
+
+          <article class="card project" data-animate>
+            <h3 data-i18n="projects.p4.title">Warehouse Mobile Scanner App</h3>
+            <p data-i18n="projects.p4.body">
+              Offline-first barcode scanning and cycle-count workflows integrated
+              with enterprise backend services.
+            </p>
+            <div class="chips">
+              <span class="chip">Flutter</span>
+              <span class="chip">REST API</span>
+              <span class="chip">Offline-first</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section-head">
+          <h2 data-i18n="skills.title">Core Skills</h2>
+          <span class="section-note" data-i18n="skills.note">Backend-first with full-cycle delivery</span>
+        </div>
+        <div class="skill-grid">
+          <article class="card skill-card" data-animate>
+            <h3 data-i18n="skills.web">Backend & Web</h3>
+            <div class="chips">
+              <span class="chip">C#</span>
+              <span class="chip">.NET Framework 4.8</span>
+              <span class="chip">ASP.NET WebForms</span>
+              <span class="chip">REST API</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">jQuery</span>
+            </div>
+          </article>
+          <article class="card skill-card" data-animate>
+            <h3 data-i18n="skills.data">Database & Automation</h3>
+            <div class="chips">
+              <span class="chip">SQL Server</span>
+              <span class="chip">Stored Procedures</span>
+              <span class="chip">CTE</span>
+              <span class="chip">Query Optimization</span>
+              <span class="chip">Indexing</span>
+              <span class="chip">Scheduled Jobs</span>
+              <span class="chip">Reporting Automation</span>
+              <span class="chip">Structured Logging</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2 data-i18n="roles.title">Target Roles</h2>
+          <span class="section-note" data-i18n="roles.note">Open to backend-oriented positions</span>
+        </div>
+        <div class="roles" data-animate>
+          <span class="role" data-i18n="roles.r1">Backend Developer (.NET)</span>
+          <span class="role" data-i18n="roles.r2">Full-stack Developer (Backend-oriented)</span>
+          <span class="role" data-i18n="roles.r3">Integration / API Engineer</span>
+          <span class="role" data-i18n="roles.r4">Mobile + Backend Hybrid Developer</span>
+        </div>
+      </section>
+
+      <footer data-i18n="footer">
+        Bachelor of Technology in Information Technology | Kasetsart University
+        (Sriracha Campus)
+      </footer>
+    </main>
+
+    <script>
+      const dictionary = {
+        en: {
+          pageTitle: "Noppharat Wongsa | Backend Portfolio",
+          pageDescription:
+            "Portfolio of Noppharat Wongsa, backend software developer focused on enterprise systems, automation, and practical business impact.",
+          langButton: "TH",
+          "nav.projects": "Projects",
+          "nav.skills": "Skills",
+          "nav.contact": "Contact",
+          "hero.kicker": "Backend Software Developer",
+          "hero.title": "Building reliable enterprise workflows and practical automation.",
+          "hero.subtitle":
+            "I design and deliver production systems across C#/.NET backend, SQL Server, API integration, and operational tooling. My focus is business logic correctness, automation, and measurable daily impact.",
+          "hero.email": "Email Me",
+          "hero.work": "See My Work",
+          "meta.name": "Name",
+          "meta.email": "Email",
+          "meta.phone": "Phone",
+          "meta.location": "Location",
+          "meta.locationValue": "Samutprakan, Thailand",
+          "meta.experience": "Experience",
+          "meta.experienceValue": "3.9 years",
+          "impact.title": "Impact Highlights",
+          "impact.note": "Enterprise systems in active production",
+          "impact.card1.title": "Approval Workflow Efficiency",
+          "impact.card1.body":
+            "Implemented PR/PO/Budget multi-step authorization and permission logic, reducing manual approval workload.",
+          "impact.card2.title": "Automated Reporting Operations",
+          "impact.card2.body":
+            "Built scheduled reporting jobs with email delivery and dynamic file generation for daily production operations.",
+          "impact.card3.title": "Data Access Reliability",
+          "impact.card3.body":
+            "Delivered internal product information systems with secure API, field permissions, and large dataset filtering.",
+          "projects.title": "Selected Projects",
+          "projects.note": "Built from real operational requirements",
+          "projects.p1.title": "Enterprise Document Workflow & Budget Control",
+          "projects.p1.body":
+            "PR/PO/Budget approval flows, role-based permissions, and financial validations with GL Account, Cost Center, Quarter, and Year.",
+          "projects.p2.title": "Automated PR/PO Reporting & Notification",
+          "projects.p2.body":
+            "Automated report generation and email distribution with centralized runtime settings and optimized large dataset processing.",
+          "projects.p3.title": "Product Information Management System",
+          "projects.p3.body":
+            "Internal platform for product search and detail inspection with pagination, modal workflows, and secure endpoint controls.",
+          "projects.p4.title": "Warehouse Mobile Scanner App",
+          "projects.p4.body":
+            "Offline-first barcode scanning and cycle-count workflows integrated with enterprise backend services.",
+          "skills.title": "Core Skills",
+          "skills.note": "Backend-first with full-cycle delivery",
+          "skills.web": "Backend & Web",
+          "skills.data": "Database & Automation",
+          "roles.title": "Target Roles",
+          "roles.note": "Open to backend-oriented positions",
+          "roles.r1": "Backend Developer (.NET)",
+          "roles.r2": "Full-stack Developer (Backend-oriented)",
+          "roles.r3": "Integration / API Engineer",
+          "roles.r4": "Mobile + Backend Hybrid Developer",
+          footer:
+            "Bachelor of Technology in Information Technology | Kasetsart University (Sriracha Campus)",
+        },
+        th: {
+          pageTitle: "Noppharat Wongsa | พอร์ตโฟลิโอสาย Backend",
+          pageDescription:
+            "พอร์ตโฟลิโอของนพรัตน์ วงษา นักพัฒนาซอฟต์แวร์สายแบ็กเอนด์ที่เน้นระบบองค์กร การทำงานอัตโนมัติ และผลลัพธ์เชิงธุรกิจที่ใช้งานได้จริง",
+          langButton: "EN",
+          "nav.projects": "โปรเจกต์",
+          "nav.skills": "ทักษะ",
+          "nav.contact": "ติดต่อ",
+          "hero.kicker": "Backend Software Developer",
+          "hero.title": "พัฒนาระบบ workflow องค์กรที่เสถียร และ automation ที่ใช้งานได้จริง",
+          "hero.subtitle":
+            "ผมออกแบบและส่งมอบระบบ production ครอบคลุม C#/.NET backend, SQL Server, การเชื่อมต่อ API และเครื่องมือภายในองค์กร โดยเน้นความถูกต้องของ business logic การลดงานซ้ำ และผลลัพธ์ที่วัดได้ในงานประจำวัน",
+          "hero.email": "ส่งอีเมลหาเรา",
+          "hero.work": "ดูผลงาน",
+          "meta.name": "ชื่อ",
+          "meta.email": "อีเมล",
+          "meta.phone": "โทรศัพท์",
+          "meta.location": "ที่อยู่",
+          "meta.locationValue": "สมุทรปราการ, ประเทศไทย",
+          "meta.experience": "ประสบการณ์",
+          "meta.experienceValue": "3.9 ปี",
+          "impact.title": "ผลงานที่สร้างผลลัพธ์",
+          "impact.note": "ระบบองค์กรที่ใช้งานจริงใน production",
+          "impact.card1.title": "เพิ่มประสิทธิภาพงานอนุมัติ",
+          "impact.card1.body":
+            "พัฒนา flow อนุมัติ PR/PO/Budget แบบหลายขั้นตอน พร้อมระบบสิทธิ์การใช้งาน ช่วยลดงาน manual ในกระบวนการอนุมัติ",
+          "impact.card2.title": "ทำรายงานอัตโนมัติ",
+          "impact.card2.body":
+            "สร้างงานรายงานตามเวลา พร้อมส่งอีเมลและสร้างไฟล์แนบแบบอัตโนมัติ รองรับงานปฏิบัติการรายวัน",
+          "impact.card3.title": "ยกระดับการเข้าถึงข้อมูล",
+          "impact.card3.body":
+            "พัฒนาระบบข้อมูลสินค้าในองค์กรพร้อม API ที่ปลอดภัย การควบคุมสิทธิ์รายฟิลด์ และการค้นหาข้อมูลขนาดใหญ่",
+          "projects.title": "โปรเจกต์เด่น",
+          "projects.note": "พัฒนาจาก requirement จริงของงานปฏิบัติการ",
+          "projects.p1.title": "ระบบเอกสารองค์กรและควบคุมงบประมาณ",
+          "projects.p1.body":
+            "พัฒนา flow อนุมัติ PR/PO/Budget ระบบสิทธิ์ตามบทบาท และเงื่อนไขตรวจสอบการเงินด้วย GL Account, Cost Center, Quarter, Year",
+          "projects.p2.title": "ระบบรายงานและแจ้งเตือน PR/PO อัตโนมัติ",
+          "projects.p2.body":
+            "สร้างระบบสร้างรายงานและส่งอีเมลอัตโนมัติ พร้อมการตั้งค่า runtime แบบรวมศูนย์ และปรับประสิทธิภาพข้อมูลปริมาณมาก",
+          "projects.p3.title": "ระบบจัดการข้อมูลสินค้า (PIM)",
+          "projects.p3.body":
+            "พัฒนาระบบภายในสำหรับค้นหาและดูรายละเอียดสินค้า รองรับ pagination, modal workflow และการป้องกัน endpoint",
+          "projects.p4.title": "แอปสแกนคลังสินค้า",
+          "projects.p4.body":
+            "พัฒนา workflow การสแกนบาร์โค้ดและ cycle-count แบบ offline-first เชื่อมต่อกับ backend องค์กร",
+          "skills.title": "ทักษะหลัก",
+          "skills.note": "โฟกัส backend และส่งมอบงานครบวงจร",
+          "skills.web": "Backend และ Web",
+          "skills.data": "Database และ Automation",
+          "roles.title": "ตำแหน่งที่สนใจ",
+          "roles.note": "เปิดรับบทบาทที่เน้น backend",
+          "roles.r1": "Backend Developer (.NET)",
+          "roles.r2": "Full-stack Developer (เน้น Backend)",
+          "roles.r3": "Integration / API Engineer",
+          "roles.r4": "Mobile + Backend Hybrid Developer",
+          footer:
+            "ปริญญาตรีเทคโนโลยีสารสนเทศ | มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา",
+        },
+      };
+
+      const savedLang = localStorage.getItem("portfolio-lang");
+      const browserLang = navigator.language && navigator.language.startsWith("th") ? "th" : "en";
+      let currentLang = savedLang || browserLang;
+
+      function applyLanguage(lang) {
+        currentLang = dictionary[lang] ? lang : "en";
+        const selected = dictionary[currentLang];
+        const fallback = dictionary.en;
+
+        document.documentElement.lang = currentLang;
+        document.title = selected.pageTitle;
+        document.getElementById("metaDescription").setAttribute("content", selected.pageDescription);
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          const nextText = selected[key] || fallback[key];
+          if (nextText) {
+            element.textContent = nextText;
+          }
+        });
+
+        document.getElementById("langToggle").textContent = selected.langButton;
+        localStorage.setItem("portfolio-lang", currentLang);
+      }
+
+      document.getElementById("langToggle").addEventListener("click", () => {
+        const next = currentLang === "en" ? "th" : "en";
+        applyLanguage(next);
+      });
+
+      applyLanguage(currentLang);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.14 },
+      );
+
+      document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
